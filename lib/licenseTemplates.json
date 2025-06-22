@@ -1,0 +1,14 @@
+{
+  "personal_use": {
+    "ko": "개인적인 용도로만 사용할 수 있으며 재판매는 금지됩니다.",
+    "en": "Use is limited to personal projects. Resale is prohibited."
+  },
+  "commercial_use": {
+    "ko": "상업적 사용은 가능하나 재판매는 금지됩니다.",
+    "en": "You may use the prompt commercially but you may not resell it."
+  },
+  "exclusive_transfer": {
+    "ko": "모든 권리가 구매자에게 이전됩니다.",
+    "en": "Full rights are transferred to the buyer."
+  }
+}

@@ -13,7 +13,7 @@ export interface Prompt {
   price: number;
   license: string;
   toolUrlTemplate?: string;
-  affiliate?: string;
+  affiliateCode?: string;
   createdAt?: Timestamp;
 }
 

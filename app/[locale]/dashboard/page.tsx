@@ -1,6 +1,7 @@
 "use client";
 export const dynamic = "force-dynamic";
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { auth, db } from '../../../lib/firebase';
 import { listPromptsByUser } from '../../../lib/repositories/prompts';
 import { useRouter } from 'next/navigation';
@@ -10,6 +11,7 @@ export default function DashboardPage() {
   const [prompts, setPrompts] = useState<any[]>([]);
   const [favorites, setFavorites] = useState<any[]>([]);
   const router = useRouter();
+  const t = useTranslations();
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -29,11 +31,11 @@ export default function DashboardPage() {
   return (
     <div className="max-w-xl mx-auto mt-10 space-y-6">
       <section>
-        <h1 className="text-xl font-semibold mb-4">Your Prompts</h1>
+        <h1 className="text-xl font-semibold mb-4">{t('dashboard.yourPrompts')}</h1>
         <ul>{prompts.map((p) => <li key={p.id}>{p.title}</li>)}</ul>
       </section>
       <section>
-        <h2 className="text-xl font-semibold mb-4">Favorites</h2>
+        <h2 className="text-xl font-semibold mb-4">{t('dashboard.favorites')}</h2>
         <ul>{favorites.map((id) => <li key={id}>{id}</li>)}</ul>
       </section>
     </div>

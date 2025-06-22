@@ -36,3 +36,18 @@ Stripe webhook URL should point to `/api/stripe/checkout` when deploying Cloud F
 The Next.js source is in the repo root. Set Vercel **Root Directory** to `/`.
 
 Legal documents are under `public/legal/` and license templates in `LICENSES.md`.
+
+### License Types
+
+Prompts can be sold under three licenses:
+
+1. **personal_use** – buyer may use personally but not resell.
+2. **commercial_use** – allows commercial projects but no resale.
+3. **exclusive_transfer** – full rights transfer to the buyer.
+
+### Deep Linking
+
+The upload form accepts a `Tool URL Template` and `Affiliate Code`.
+In the prompt detail page a *Run in Tool* button is shown when the template is set.
+`{{PROMPT}}` in the template is replaced with the encoded prompt text and
+`{{AFF}}` with the affiliate code.

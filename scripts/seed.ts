@@ -9,7 +9,9 @@ async function main() {
     previewUrl: 'https://example.com/preview.jpg',
     tags: ['sample'],
     price: 0,
-    license: 'personal_use'
+    license: 'personal_use',
+    toolUrlTemplate: 'https://example.com/use?prompt={{PROMPT}}&aff={{AFF}}',
+    affiliateCode: 'abc123'
   });
   console.log('Seeded');
 }

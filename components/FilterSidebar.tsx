@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useTranslations } from 'next-intl';
 
 const MODELS = ["Midjourney", "DALL·E", "Sora", "Runway", "Pika", "Veo"];
 const TAGS = ["Animation", "Cinematic", "Product", "Character", "Environment", "Fantasy"];
@@ -12,6 +13,7 @@ export interface Filters {
 export default function FilterSidebar({ onChange }: { onChange: (f: Filters) => void }) {
   const [models, setModels] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
+  const t = useTranslations();
 
   const toggle = (arr: string[], val: string, setter: (v: string[]) => void) => {
     setter(arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val]);
@@ -22,7 +24,7 @@ export default function FilterSidebar({ onChange }: { onChange: (f: Filters) => 
   return (
     <aside className="p-4 border-r space-y-4">
       <div>
-        <h3 className="font-semibold mb-2">Models</h3>
+        <h3 className="font-semibold mb-2">{t('filter.models')}</h3>
         {MODELS.map((m) => (
           <label key={m} className="block">
             <input type="checkbox" checked={models.includes(m)} onChange={() => toggle(models, m, setModels)} /> {m}
@@ -30,14 +32,14 @@ export default function FilterSidebar({ onChange }: { onChange: (f: Filters) => 
         ))}
       </div>
       <div>
-        <h3 className="font-semibold mb-2">Tags</h3>
+        <h3 className="font-semibold mb-2">{t('filter.tags')}</h3>
         {TAGS.map((t) => (
           <label key={t} className="block">
             <input type="checkbox" checked={tags.includes(t)} onChange={() => toggle(tags, t, setTags)} /> {t}
           </label>
         ))}
       </div>
-      <button onClick={apply} className="bg-blue-600 text-white px-3 py-1">Apply</button>
+      <button onClick={apply} className="bg-blue-600 text-white px-3 py-1">{t('filter.apply')}</button>
     </aside>
   );
 }

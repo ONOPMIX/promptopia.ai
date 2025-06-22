@@ -15,7 +15,7 @@ export default function Navbar() {
       <div className="flex gap-4 items-center">
         <Link href="/marketplace">{t('nav.market')}</Link>
         <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="px-2 py-1 border rounded">
-          {theme === 'dark' ? 'Light' : 'Dark'}
+          {theme === 'dark' ? t('btn.light') : t('btn.dark')}
         </button>
         <button onClick={() => setOpen(!open)}>🛒</button>
         <Link href="/auth/login">{t('nav.login')}</Link>
