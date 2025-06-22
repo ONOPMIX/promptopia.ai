@@ -34,7 +34,21 @@ Stripe webhook URL should point to `/api/stripe/checkout` when deploying Cloud F
 
 ## Deploy
 
-The Next.js source is in the repo root. Set Vercel **Root Directory** to `/`.
+The Next.js source lives in the repository root so Vercel can detect the
+framework automatically. When importing the project, set the **Root Directory**
+field to `/`.
+
+`package.json` includes the required dependencies:
+
+```json
+{
+  "dependencies": {
+    "next": "15.3.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
+```
 
 Legal documents are under `public/legal/` and license templates in `LICENSES.md`.
 
