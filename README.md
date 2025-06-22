@@ -14,6 +14,7 @@ npm install
 npm run dev
 ```
 
+If installation fails due to network restrictions, create an `.npmrc` file with `registry=https://registry.npmmirror.com`.
 ### Environment variables
 
 ```
