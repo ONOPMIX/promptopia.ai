@@ -4,5 +4,6 @@
   "nav.upload": "업로드",
   "nav.dashboard": "대시보드",
   "nav.login": "로그인",
-  "nav.register": "회원가입"
+  "nav.register": "회원가입",
+  "nav.cart": "장바구니"
 }

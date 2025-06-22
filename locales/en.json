@@ -4,5 +4,6 @@
   "nav.upload": "Upload",
   "nav.dashboard": "Dashboard",
   "nav.login": "Login",
-  "nav.register": "Register"
+  "nav.register": "Register",
+  "nav.cart": "Cart"
 }

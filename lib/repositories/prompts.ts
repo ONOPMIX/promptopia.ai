@@ -12,6 +12,8 @@ export interface Prompt {
   tags: string[];
   price: number;
   license: string;
+  toolUrlTemplate?: string;
+  affiliate?: string;
   createdAt?: Timestamp;
 }
 
@@ -25,16 +27,23 @@ export async function createPrompt(data: Prompt) {
 
 export async function getPrompt(id: string) {
   const snap = await getDoc(doc(db, 'prompts', id));
-  return snap.exists() ? { id: snap.id, ...snap.data() } as Prompt : null;
+  return snap.exists() ? ({ id: snap.id, ...snap.data() } as Prompt) : null;
 }
 
 export async function listPromptsByUser(uid: string) {
   const q = query(collection(db, 'prompts'), where('uid', '==', uid));
   const snap = await getDocs(q);
-  return snap.docs.map(d => ({ id: d.id, ...d.data() } as Prompt));
+  return snap.docs.map((d) => ({ id: d.id, ...(d.data() as any) } as Prompt));
 }
 
-export async function listPrompts() {
-  const snap = await getDocs(collection(db, 'prompts'));
-  return snap.docs.map(d => ({ id: d.id, ...d.data() } as Prompt));
+export async function listPrompts(filters?: { models?: string[]; tags?: string[] }) {
+  let q = collection(db, 'prompts') as any;
+  if (filters?.models?.length) {
+    q = query(q, where('model', 'in', filters.models.slice(0, 10)));
+  }
+  if (filters?.tags?.length) {
+    q = query(q, where('tags', 'array-contains-any', filters.tags.slice(0, 10)));
+  }
+  const snap = await getDocs(q);
+  return snap.docs.map(d => ({ id: d.id, ...(d.data() as any) } as Prompt));
 }
